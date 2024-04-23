@@ -15,7 +15,7 @@ globalThis.globalStatsCounter = 0
 const memoryKeys = ['MemFree', 'MemAvailable'];
 
 // Route to get all books
-app.get('/api/stats', (req, res) => {
+app.get('/stats', (req, res) => {
 
     response = {};
     try {
@@ -64,7 +64,7 @@ const pool = mysql.createPool({
 
 
 // Route to get all books
-app.get('/api/books', (req, res) => {    
+app.get('/books', (req, res) => {    
     
     pool.getConnection((err, connection) => {
         if (err) {
@@ -92,7 +92,7 @@ app.get('/api/books', (req, res) => {
 });
 
 // Route to get a specific book by ID
-app.get('/api/books/:id', (req, res) => {
+app.get('/books/:id', (req, res) => {
     globalThis.globalStatsCounter = globalThis.globalStatsCounter + 1;
     const bookId = parseInt(req.params.id);
 
