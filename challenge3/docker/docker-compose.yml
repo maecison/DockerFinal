@@ -1,19 +1,17 @@
-version: '3.8'
-
 services:
   nginx:
     image: nginx:1.19.0
     ports:
       - "8080:80"
     volumes:
-      - ./nginx.conf:/etc/nginx.conf
+      - ./nginx:/etc/nginx.conf
     depends_on:
       - node-service
 
   node-service:
     image: node:14.15.4
     ports:
-      - "3000:3000"
+      - "3000"
     volumes:
       - ./api:/app
     working_dir: /app
@@ -27,7 +25,7 @@ services:
     image: mariadb
     restart: always
     ports:
-      - "3306:3306"
+      - "3306"
     volumes:
       - db-data:/var/lib/mysql
     env_file:
